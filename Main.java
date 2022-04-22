@@ -29,10 +29,22 @@ public class Main {
 //        System.out.println(ll.lastIndexOf("Boston"));
 //        ll.sort();
 //        System.out.println(ll);
-        MyHeap<Integer> heap = new MyHeap<>(5);
-        heap.add(380);
 
+
+//        MySecondHeap heap = new MySecondHeap(3);
+//        heap.add(3);
+//        heap.add(8);
+//        heap.add(1);
+//        heap.minHeap();
+//        heap.printHeap();
+
+        MyThirdHeap<Integer> heap = new MyThirdHeap<>();
+        heap.add(34);
+        heap.add(45);
+        heap.add(2);
+        heap.add(56);
+        heap.add(12);
+        heap.add(1);
         heap.print();
-
     }
 }

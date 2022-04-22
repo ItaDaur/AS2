@@ -56,6 +56,10 @@ public class MyArrayList<T extends Comparable<T>> implements MyList<T> {
         length++;
     }
 
+    public void set(int index, T item){
+        arr[index]=item;
+    }
+
     @Override
     public boolean remove(T item) {
         int count = 0;
@@ -157,4 +161,6 @@ public class MyArrayList<T extends Comparable<T>> implements MyList<T> {
         return Arrays.toString(arr);
 
     }
+
+
 }
