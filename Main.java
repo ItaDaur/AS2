@@ -46,7 +46,7 @@ public class Main {
         heap.add(45);
         heap.add(1);
         heap.print();
-        heap.remove(56);
+        heap.removeRoot();
         heap.print();
     }
 }

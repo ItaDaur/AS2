@@ -4,7 +4,6 @@ public class MyThirdHeap<T extends Comparable<T>> {
 
     public MyThirdHeap() {
         arr = new MyArrayList<>();
-//        this.size = size;
     }
 
     public void add(T item){
@@ -14,24 +13,30 @@ public class MyThirdHeap<T extends Comparable<T>> {
             return;
 
         System.out.println("add " + item);
-        minHeap();
+        allHeap();
     }
 
-    public void minHeap() {
-        for (int i = (this.size() / 2); i >= 0; i--) {
-            System.out.println("from min: "  + i);
-            heapify(i);
+    public void changeHeap(){
+        isMin = !isMin;
+        allHeap();
+    }
+
+    public void allHeap() {
+        if (isMinHeap()) {
+            for (int i = (this.size() / 2); i >= 0; i--) {
+                System.out.println("from min: "  + i);
+                heapifyMin(i);
+            }
+        } else {
+            for (int i = (this.size() / 2); i >= 0; i--) {
+                System.out.println("from min: "  + i);
+                heapifyMax(i);
+            }
         }
+
     }
 
-    private boolean isLeaf(int i) {
-        if (rightChild(i) >= this.size() || leftChild(i) >= this.size()) {
-            return true;
-        }
-        return false;
-    }
-
-    private void heapify(int top) {
+    private void heapifyMin(int top) {
         int min = top;
         int l = leftChild(top), r = rightChild(top);
 
@@ -44,15 +49,33 @@ public class MyThirdHeap<T extends Comparable<T>> {
         if(min != top) {
             swap(top, min);
             System.out.println(top + " " + l);
-            heapify(l);
+            heapifyMin(l);
         }
     }
 
+    private void heapifyMax(int top) {
+        int max = top;
+        int l = leftChild(top), r = rightChild(top);
+
+        if(l < this.size() && arr.get(top).compareTo(arr.get(l)) < 0){
+            max=l;
+        }
+        if(r < this.size() && arr.get(max).compareTo(arr.get(r)) < 0) {
+            max = r;
+        }
+        if(max != top) {
+            swap(top, max);
+            System.out.println(top + " " + l);
+            heapifyMax(l);
+        }
+    }
+
+
     public T removeRoot() {
         T popped = arr.get(0);
-        arr.remove(0);
         swap(0,size()-1);
-        minHeap();
+        arr.remove(size()-1);
+        allHeap();
         return popped;
     }
 
@@ -60,7 +83,7 @@ public class MyThirdHeap<T extends Comparable<T>> {
         int index = arr.indexOf(item);
         swap(index,size()-1);
         arr.remove(size()-1);
-        minHeap();
+        allHeap();
         if (index!=-1) {
             return true;
         }
@@ -69,7 +92,7 @@ public class MyThirdHeap<T extends Comparable<T>> {
 
     private boolean removeAll(T item){
         if (arr.remove(item)) {
-            minHeap();
+            allHeap();
             return true;
         }
         return false;
