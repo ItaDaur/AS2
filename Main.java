@@ -40,11 +40,13 @@ public class Main {
 
         MyThirdHeap<Integer> heap = new MyThirdHeap<>();
         heap.add(34);
-        heap.add(45);
+        heap.add(12);
         heap.add(2);
         heap.add(56);
-        heap.add(12);
+        heap.add(45);
         heap.add(1);
+        heap.print();
+        heap.remove(56);
         heap.print();
     }
 }

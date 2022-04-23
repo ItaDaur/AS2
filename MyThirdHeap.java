@@ -36,7 +36,7 @@ public class MyThirdHeap<T extends Comparable<T>> {
         int l = leftChild(top), r = rightChild(top);
 
         if(l < this.size() && arr.get(top).compareTo(arr.get(l)) > 0){
-            min = l;
+            min=l;
         }
         if(r < this.size() && arr.get(min).compareTo(arr.get(r)) > 0) {
             min = r;
@@ -51,9 +51,28 @@ public class MyThirdHeap<T extends Comparable<T>> {
     public T removeRoot() {
         T popped = arr.get(0);
         arr.remove(0);
-        heapify(0);
-
+        swap(0,size()-1);
+        minHeap();
         return popped;
+    }
+
+    public boolean remove(T item){
+        int index = arr.indexOf(item);
+        swap(index,size()-1);
+        arr.remove(size()-1);
+        minHeap();
+        if (index!=-1) {
+            return true;
+        }
+        return false;
+    }
+
+    private boolean removeAll(T item){
+        if (arr.remove(item)) {
+            minHeap();
+            return true;
+        }
+        return false;
     }
 
     private int parent(int position) {
