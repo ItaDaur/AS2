@@ -1,52 +1,51 @@
 public class Main {
     public static void main(String[] args) {
-//        MyArrayList<String> arr = new MyArrayList<>();
-//        arr.add("Atyrau");
-//        arr.add("Astana");
-//        arr.add("Almaty");
-//        arr.add("Astana");
-//        arr.add("Kokshetau",1);
-//
-//
-//        arr.remove(2);
-//        for (int i=0;i<arr.size();i++) {
-//            System.out.print(arr.get(i) + " ");
-//        }
-//        System.out.println();
-//        arr.sort();
-//        System.out.println(arr);
+        int [] arr = {2,7,8,12,15,21,26,35,48,56,71,99};
+        System.out.println(searchSum(61,arr));
 
-//        MyLinkedList<String> ll = new MyLinkedList<>();
-//        ll.add("Atyrau");
-//        ll.add("Astana");
-//        ll.add("Almaty");
-//        ll.add("Aktau");
-//        ll.add("London");
-//        ll.add("Boston");
-//        System.out.println(ll);
-//        ll.add("Moscow",6);
-//        System.out.println(ll);
-//        System.out.println(ll.lastIndexOf("Boston"));
-//        ll.sort();
-//        System.out.println(ll);
+    }
 
+    public static boolean searchKey(int key, int[] list) {
+        int min = 0;
+        int max = list.length - 1;
 
-//        MySecondHeap heap = new MySecondHeap(3);
-//        heap.add(3);
-//        heap.add(8);
-//        heap.add(1);
-//        heap.minHeap();
-//        heap.printHeap();
+        while (min <= max) {
+            int mid = (min + max) / 2;
+            int mb = list[mid];
+            if (mb == key) {
+                return true;
+            }
+            if (mb > key) {
+                max = mid - 1;
+            } else {
+                min = mid + 1;
+            }
+        }
 
-        MyThirdHeap<Integer> heap = new MyThirdHeap<>();
-        heap.add(34);
-        heap.add(12);
-        heap.add(2);
-        heap.add(56);
-        heap.add(45);
-        heap.add(1);
-        heap.print();
-        heap.removeRoot();
-        heap.print();
+        return false;
+    }
+
+    public static boolean searchSum(int sum, int[] list) {
+        for (int i=0;i<list.length;i++) {
+            if (list[i] == sum )
+                return true;
+            int min = i;
+            int max= list.length-1;
+            int storage = list[i];
+            while (min <= max) {
+                int mid = (min + max) / 2;
+                int mb = list[mid];
+                if (mb == (sum-storage)) {
+                    return true;
+                }
+                if (mb > (sum-storage)) {
+                    max = mid - 1;
+                } else {
+                    min = mid + 1;
+                }
+            }
+
+        }
+        return false;
     }
 }
