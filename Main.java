@@ -1,7 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        int [] arr = {2,7,8,12,15,21,26,35,48,56,71,99};
-        System.out.println(searchSum(61,arr));
+        BST bst = new BST();
+
+        bst.put(7,7);
+        bst.put(4,4);
+        bst.put(5,5);
+        bst.put(2,2);
+        bst.put(1,1);
+        bst.delete(4);
 
     }
 

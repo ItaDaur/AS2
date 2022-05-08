@@ -1,7 +1,7 @@
 public class MyHashTable<K,V> {
     private static class MyNode<K,V> {
-        K key;
-        V value;
+        private K key;
+        private V value;
         MyNode<K,V> next;
 
         MyNode(K key, V value) {
@@ -51,8 +51,42 @@ public class MyHashTable<K,V> {
         return null;
     }
 
+    public K getKey (V value) {
+        for (int i=0;i<capacity;i++) {
+            MyNode<K,V> it = buckets[i];
+            while (it !=null) {
+                if (it.value.equals(value))
+                    return it.key;
+                it = it.next;
+            }
+        }
+
+        return null;
+    }
+
+    public boolean contains(V value) {
+        for (int i=0;i<capacity;i++) {
+            MyNode<K,V> it = buckets[i];
+            while (it !=null) {
+                if (it.value.equals(value))
+                    return true;
+                it = it.next;
+            }
+        }
+        return false;
+    }
+
+    public V remote (K key) {
+
+        return null;
+    }
+
     private int hash(K key){
         return (key.hashCode() & 0x7FFFFFFF) % capacity;
+    }
+
+    private void rehash() {
+
     }
 
     public void printAll() {
@@ -65,5 +99,9 @@ public class MyHashTable<K,V> {
             }
             System.out.println();
         }
+    }
+
+    public static void main(String[] args) {
+
     }
 }

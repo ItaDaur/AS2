@@ -1,4 +1,6 @@
-public class MyQueue<T extends Comparable<T>> {
+import java.util.Iterator;
+
+public class MyQueue<T extends Comparable<T>> implements Iterable<T> {
     private MyLinkedList<T> ll;
 
     public MyQueue() {
@@ -27,4 +29,8 @@ public class MyQueue<T extends Comparable<T>> {
     }
 
 
+    @Override
+    public Iterator<T> iterator() {
+        return null;
+    }
 }
