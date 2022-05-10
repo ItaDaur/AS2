@@ -67,7 +67,6 @@ public class MyHashTable<K,V> {
                 it = it.next;
             }
         }
-
         return null;
     }
 
@@ -99,8 +98,6 @@ public class MyHashTable<K,V> {
             it = it.next;
         }
         length--;
-//        if (8*length == capacity)
-//            rehash(1/2);
         return null;
     }
 
@@ -109,12 +106,11 @@ public class MyHashTable<K,V> {
     }
 
     private void rehash(int init) {
-        capacity = capacity*init;
         MyNode<K,V>[] oldBuckets = buckets;
+        capacity = capacity*init;
         buckets = new MyNode[capacity];
-        int i=0;
-        MyNode<K,V> it = oldBuckets[i];
-        for (;i< oldBuckets.length;i++) {
+        for (int i=0;i< oldBuckets.length;i++) {
+            MyNode<K,V> it = oldBuckets[i];
             while (it != null) {
                 int index = hash(it.key);
                 MyNode<K,V> newNode = new MyNode<>(it.key, it.value);
@@ -127,42 +123,6 @@ public class MyHashTable<K,V> {
                 it=it.next;
             }
         }
-
-
-//        MyNode<K,V>[] oldBuckets = new MyNode[capacity];
-//        int i=0;
-//        MyNode<K,V> it = buckets[i];
-//        for (;i< buckets.length;i++) {
-//            while (it != null) {
-//                int index = hash(it.key);
-//                MyNode<K,V> newNode = new MyNode<>(it.key, it.value);
-//                if (oldBuckets[index] == null) {
-//                    oldBuckets[index] = newNode;
-//                } else {
-//                    newNode.next = oldBuckets[index];
-//                    oldBuckets[index]= newNode;
-//                }
-//                it=it.next;
-//            }
-//        }
-
-//        for (int i=0;i<capacity;i++) {
-//            if (buckets[i]!=null) {
-//                int index = hash(buckets[i].key);
-//                MyNode<K,V> temp = new MyNode<>(buckets[i].key, buckets[i].value);
-//                temp.next=null;
-//                MyNode<K,V> current = buckets[i];
-//                input(temp,newNode,index);
-//                while (current.next!=null){
-//                    current = current.next;
-//                    MyNode<K,V> node = new MyNode<>(current.key, current.value);
-//                    node.next=null;
-//                    int pos = hash(current.key);
-//                    input(node,newNode,pos);
-//                }
-//            }
-//        }
-//        buckets = oldBuckets;
     }
 
     public int size() {
@@ -193,36 +153,36 @@ public class MyHashTable<K,V> {
         hashTable.put(8,"D");
         hashTable.put(10,"A");
         hashTable.put(9,"B");
-//        hashTable.put(11,"C");
-//        hashTable.put(12,"D");
-//        hashTable.put(13,"A");
-//        hashTable.put(14,"B");
-//        hashTable.put(16,"C");
-//        hashTable.put(17,"D");
-//        hashTable.put(18,"A");
-//        hashTable.put(19,"B");
-//        hashTable.put(20,"C");
-//        hashTable.put(21,"D");
-//        hashTable.put(22,"A");
-//        hashTable.put(23,"B");
-//        hashTable.put(24,"C");
-//        hashTable.put(25,"D");
-//        hashTable.put(26,"A");
-//        hashTable.put(27,"B");
-//        hashTable.put(28,"C");
-//        hashTable.put(29,"D");
-//        hashTable.put(30,"A");
-//        hashTable.put(31,"B");
-//        hashTable.put(32,"C");
-//        hashTable.put(33,"D");
-//        hashTable.put(34,"A");
-//        hashTable.put(35,"B");
-//        hashTable.put(36,"C");
-//        hashTable.put(37,"D");
-//        hashTable.put(38,"A");
-//        hashTable.put(39,"B");
-//        hashTable.put(40,"C");
-//        hashTable.put(41,"D");
+        hashTable.put(11,"C");
+        hashTable.put(12,"D");
+        hashTable.put(13,"A");
+        hashTable.put(14,"B");
+        hashTable.put(16,"C");
+        hashTable.put(17,"D");
+        hashTable.put(18,"A");
+        hashTable.put(19,"B");
+        hashTable.put(20,"C");
+        hashTable.put(21,"D");
+        hashTable.put(22,"A");
+        hashTable.put(23,"B");
+        hashTable.put(24,"C");
+        hashTable.put(25,"D");
+        hashTable.put(26,"A");
+        hashTable.put(27,"B");
+        hashTable.put(28,"C");
+        hashTable.put(29,"D");
+        hashTable.put(30,"A");
+        hashTable.put(31,"B");
+        hashTable.put(32,"C");
+        hashTable.put(33,"D");
+        hashTable.put(34,"A");
+        hashTable.put(35,"B");
+        hashTable.put(36,"C");
+        hashTable.put(37,"D");
+        hashTable.put(38,"A");
+        hashTable.put(39,"B");
+        hashTable.put(40,"C");
+        hashTable.put(41,"D");
         hashTable.printAll();
         System.out.println(hashTable.size());
 
