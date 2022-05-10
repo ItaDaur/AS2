@@ -1,13 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        BST bst = new BST();
 
-        bst.put(7,7);
-        bst.put(4,4);
-        bst.put(5,5);
-        bst.put(2,2);
-        bst.put(1,1);
-        bst.delete(4);
 
     }
 
